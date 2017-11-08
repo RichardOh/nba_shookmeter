@@ -3,7 +3,5 @@
 import pandas as pd
 
 df = pd.read_csv("0021600001.csv")
-
-for str in df['HOMEDESCRIPTION'].iteritems():
-    if str[1].find("Free Throw") != -1:
-        print(str)
+df_home = df[df["HOMEDESCRIPTION"].str.contains("Free Throw") == True]["HOMEDESCRIPTION"]
+df_away = df[df["VISITORDESCRIPTION"].str.contains("Free Throw") == True]["VISITORDESCRIPTION"]
